@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.aswifter.material.book.BooksFragment;
 import com.aswifter.material.widget.BackHandledFragment;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity implements BackHandledFragment.BackHandlerInterface {
 
     private DrawerLayout mDrawerLayout;
@@ -72,14 +74,18 @@ public class MainActivity extends AppCompatActivity implements BackHandledFragme
 
 
     private void setUpProfileImage() {
-        findViewById(R.id.profile_image).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToBlog();
-                mDrawerLayout.closeDrawers();
-                mNavigationView.getMenu().getItem(1).setChecked(true);
-            }
-        });
+
+        CircleImageView iv = (CircleImageView)findViewById(R.id.profile_image);
+        if (iv != null) {
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switchToBlog();
+                    mDrawerLayout.closeDrawers();
+                    mNavigationView.getMenu().getItem(1).setChecked(true);
+                }
+            });
+        }
     }
 
 
